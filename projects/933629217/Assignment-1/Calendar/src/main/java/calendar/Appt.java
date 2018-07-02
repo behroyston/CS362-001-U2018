@@ -105,7 +105,6 @@ public class Appt{
     public Appt(int startHour, int startMinute, 
             int startDay, int startMonth, int startYear,
              String title, String description, String emailAddress ) {
-
     //Sets all instance variables except recurring information
     setStartHour(startHour);
     setStartMinute(startMinute);
@@ -115,14 +114,11 @@ public class Appt{
     setTitle(title);
     setDescription(description);
     setEmailAddress(emailAddress);
-    
     //Set default recurring information
     int[] recurringDays = new int[0];
     setRecurrence(recurringDays, RECUR_BY_MONTHLY, 0, RECUR_NUMBER_NEVER);
-    
     //Leave XML Element null
     setXmlElement(null);
-    
     //Sets valid to true - this is now a valid appointment
     this.valid = true;
 }
@@ -149,7 +145,6 @@ public class Appt{
             description, emailAddress);
          this.valid=true;
     }
-
 	/**
      * Sets the XML Element for this appointment
      */
@@ -160,8 +155,6 @@ public class Appt{
     public Element getXmlElement() {
         return xmlElement;
     }
-
-  
     /**
      * @sets valid to true if the appointment is valid
      */
@@ -169,56 +162,51 @@ public class Appt{
 
 		if (startMonth < 1 || startMonth > 12)
 			this.valid = false;
+
 		else if (startHour < 0 || startHour > 23)
 			this.valid = false;
+
 		else if (startMinute < 0 || startMinute > 59)
 			this.valid = false;
 		else if (startYear <= 0)
 			this.valid = false;
 		else {
 			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
-			if (startDay < 1 || startDay > NumDaysInMonth)
-				this.valid = false;
-			else
+//			if (startDay < 1 || startDay > NumDaysInMonth)
+//				this.valid = false;
+//			else
 				this.valid = true;
 		}
 	}
-    
-
-
     /** Sets startHour */
     public void setStartHour(int startHour) {
     	this.startHour = startHour;
     }
-    
     /** Sets startHour */
     public void setStartMinute(int startMinute) {   	
         this.startMinute = startMinute;
     }
-
     /** Sets startDay */
     public void setStartDay(int startDay) {
         this.startDay = startDay;
     }
-    
     /** Sets startMonth */
     public void setStartMonth(int startMonth) {
         this.startMonth = startMonth;
     }
-    
     /** Sets startYear */
     public void setStartYear(int startYear) {
         this.startYear = startYear;
     }
-
     /** Sets title */
     public void setTitle(String title) {
-        if (title == null) 
+/*
+        if (title == null)
             this.title = "";
         else
+*/
             this.title = title;
     }
-    
     /** Sets description */
     public void setDescription(String description) {
         if (description == null)
@@ -237,37 +225,30 @@ public class Appt{
     public int getStartHour() {
         return startHour;
     }
-    
     /** Gets startHour */
     public int getStartMinute() {
         return startMinute;
     }
-    
     /** Gets startDay */
     public int getStartDay() {
         return startDay;
     }
-    
     /** Gets startMonth */
     public int getStartMonth() {
         return startMonth;
     }
-    
     /** Gets startYear */
     public int getStartYear() {
         return startYear;
     }
- 
     /** Gets title */
     public String getTitle() {
         return title;
     }
-    
     /** Gets description */
     public String getDescription() {
         return description;
     }
-    
     /** Gets emailAddress */
     public String getEmailAddress() {
         return emailAddress;
@@ -285,7 +266,6 @@ public class Appt{
         return (day == getStartDay() && month == getStartMonth() 
                 && year == getStartYear());
     }
-    
     /**
      * Checks to see if a time is set for this appointment.
      * @return True if this appointment has a time set. Otherwise false.
@@ -303,12 +283,14 @@ public class Appt{
         setRecurNumber(recurNumber);
     }
     private void setRecurDays(int[] recurDays) {
+/*
         if (recurDays == null) {
             this.recurDays = new int[0];
         }
         else {
+*/
             this.recurDays = recurDays;
-        }
+        //}
     }
     /** Sets recurBy */
     private void setRecurBy(int recurBy) {
@@ -318,12 +300,10 @@ public class Appt{
     private void setRecurIncrement(int recurIncrement) {
         this.recurIncrement = recurIncrement;
     }
-    
     /** Sets recurNumber */
     private void setRecurNumber(int recurNumber) {
         this.recurNumber = recurNumber;
     }
-    
     /** Gets recurNumber */
     public int getRecurNumber() {
         return recurNumber;
@@ -380,8 +360,4 @@ public class Appt{
          String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
         return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
     }
-
-
-
-
 }

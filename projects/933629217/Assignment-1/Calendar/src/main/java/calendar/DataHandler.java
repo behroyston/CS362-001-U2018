@@ -367,7 +367,9 @@ public class DataHandler {
                 //The loop above should have found a day. If the program 
                 //execution is here then the weekdays specified are not in the
                 //range of valid Gregorian Calendar Days. Return null here.
+/*
                 return null;
+*/
             case Appt.RECUR_BY_MONTHLY:
                 //Just increment the month and return the day. Not sure what
                 //happens when the day is 31 and the next month has 30 days...

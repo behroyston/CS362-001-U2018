@@ -11,8 +11,6 @@ import java.util.LinkedList;
 
 
 
-
-
 public class CalendarMain {
 	public static void main(String[] args) throws DateOutOfRangeException, IOException {
 		/** instance of DataHandler **/
