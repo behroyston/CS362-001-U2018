@@ -133,7 +133,18 @@ public class DataHandlerRandomTest {
                      } else if (methodName.equals("getApptRange")) {
                          GregorianCalendar firstDay = new GregorianCalendar(startDay2,startHour2,startYear2);
                          GregorianCalendar secondDay;
-                         int secondDayInt = startDay2 + 20;
+                         int secondDayInt;
+
+                         /*int startDayBefore = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+                         if (startDayBefore == 0) {
+                             secondDayInt = startDay2 - 10;
+                         }*/
+                         /*else {*/
+                             secondDayInt = startDay2 + 20;
+/*
+                         }
+*/
+
                          secondDay = new GregorianCalendar(secondDayInt, startHour2, startYear2);
                          /*else
                          {

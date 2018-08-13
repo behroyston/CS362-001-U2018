@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class ApptRandomTest {
 
-	private static final long TestTimeout = 60 * 100 * 1; /* Timeout at 30 seconds */
+	private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
 	private static final int NUM_TESTS=100;
 
 	/**
@@ -111,42 +111,38 @@ public class ApptRandomTest {
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 						}
 					   else if (methodName.equals("setValid")){
-						   int fieldToSetToNull = ValuesGenerator.getRandomIntBetween(random, 0, 4);
-						   int negativeOrExceed;
-						   if (fieldToSetToNull == 1) {
-						   	   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
-						   	   if (negativeOrExceed == 1) {
-								   appt.setStartMonth(-1);
+					   	   int fieldValidOrInvalid = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+
+					   	   if (fieldValidOrInvalid == 0) {
+							   int fieldToSetToNull = ValuesGenerator.getRandomIntBetween(random, 0, 4);
+							   int negativeOrExceed;
+							   if (fieldToSetToNull == 1) {
+								   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+								   if (negativeOrExceed == 1) {
+									   appt.setStartMonth(-1);
+								   } else
+									   appt.setStartMonth(100);
+							   } else if (fieldToSetToNull == 2) {
+								   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+								   if (negativeOrExceed == 1) {
+									   appt.setStartHour(-1);
+								   } else
+									   appt.setStartHour(100);
+							   } else if (fieldToSetToNull == 3) {
+								   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+								   if (negativeOrExceed == 1) {
+									   appt.setStartMinute(-1);
+								   } else
+									   appt.setStartMinute(100);
+							   } else if (fieldToSetToNull == 4) {
+								   appt.setStartYear(-1);
+							   } else {
+								   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
+								   if (negativeOrExceed == 1) {
+									   appt.setStartDay(-1);
+								   } else
+									   appt.setStartDay(100);
 							   }
-							   else
-							   	   appt.setStartMonth(100);
-						   }
-						   else if (fieldToSetToNull == 2) {
-							   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
-							   if (negativeOrExceed == 1) {
-								   appt.setStartHour(-1);
-							   }
-							   else
-							   	   appt.setStartHour(100);
-						   }
-						   else if (fieldToSetToNull == 3) {
-							   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
-							   if (negativeOrExceed == 1) {
-								   appt.setStartMinute(-1);
-							   }
-							   else
-							   	   appt.setStartMinute(100);
-						   }
-						   else if (fieldToSetToNull == 4) {
-						   	   appt.setStartYear(-1);
-						   }
-						   else {
-							   negativeOrExceed = ValuesGenerator.getRandomIntBetween(random, 0, 1);
-							   if (negativeOrExceed == 1) {
-								   appt.setStartDay(-1);
-							   }
-							   else
-							   	   appt.setStartDay(100);
 						   }
 
 					   	   appt.setValid();
